@@ -2,7 +2,7 @@ dist: trusty
 
 jobs: 
   include:
-    - stage: 
+    - stage: Docker build stage
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t oskarsportfolio:$TRAVIS_BUILD_NUMBER .
