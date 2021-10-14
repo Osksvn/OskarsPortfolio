@@ -6,5 +6,8 @@ jobs:
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t oskarsportfolio:$TRAVIS_BUILD_NUMBER .
+      - docker images
+      - docker tag oskarsportfolio $DOCKER_USERNAME/oskarsportfolio:$TRAVIS_BUILD_NUMBER
+      - docker push $DOCKER_USERNAME/oskarsportfolio:$TRAVIS_BUILD_NUMBER
       - docker tag oskarsportfolio:$TRAVIS_BUILD_NUMBER $DOCKER_USERNAME/oskarsportfolio
       - docker push $DOCKER_USERNAME/oskarsportfolio:latest
